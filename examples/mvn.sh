@@ -1,2 +1,2 @@
 #!/bin/sh
-hermes-cli -o ./ --config_file mvn.yml --experiment project=Test type=MVN trial=0
+hermes-cli -o ./data --config_file mvn.yml --experiment project=Test type=Mvn trial=0
