@@ -8,5 +8,8 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## HERMES MVN
 
+### 0.0.3 <small>November 25, 2025</small>
+- Installation and MVN Analyze setup instructions.
+
 ### 0.0.2 <small>October 20, 2025</small>
 - Initial public release of an optional Basler HERMES package.
