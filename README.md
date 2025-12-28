@@ -23,7 +23,7 @@ pip install -e hermes-mvn
 ```
 
 ## Usage
-Using the device follows the standard [configuration file specification](https://maximyudayev.github.io/hermes/) process of HERMES nodes.
+Using the device follows the standard [configuration file specification](https://yudayev.com/hermes) process of HERMES nodes.
 
 Turn on Xsens MVN Analyze as for regular usage, place sensors on the person, calibrate the setup in the app, [activate Network Streamer](https://base.movella.com/s/article/Network-Streamer-in-MVN-1611927767465), launch HERMES. No need to record within MVN Analyze.
 
