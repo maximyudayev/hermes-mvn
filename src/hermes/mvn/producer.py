@@ -177,7 +177,6 @@ class MvnAnalyzeProducer(Producer):
         transmit_delay_sample_period_s: float = float("nan"),
         **_
     ):
-
         self._mvn_segment_setup = MVN_SEGMENT_SETUP[mvn_setup]
         self._mvn_joint_setup = MVN_JOINT_SETUP[mvn_setup]
         self._mvn_sensor_setup = MVN_SENSOR_SETUP[mvn_setup]

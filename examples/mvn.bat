@@ -1,1 +1,3 @@
+@echo on
+call .venv\Scripts\activate
 call hermes-cli -o .\data --config_file mvn.yml --experiment project=Test type=Mvn trial=0
