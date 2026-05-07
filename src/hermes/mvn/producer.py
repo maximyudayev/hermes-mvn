@@ -371,6 +371,7 @@ class MvnAnalyzeProducer(Producer):
         extra_data = {
             "counter": metadata["counter"],
             "time_since_start_s": metadata["time_since_start_s"],
+            "toa_s": self._xsens_timestep_receive_time_s,
         }
 
         data: NewDataDict = {}
@@ -419,7 +420,7 @@ class MvnAnalyzeProducer(Producer):
 
         tag: str = "%s.data" % (self.topic)
         self._publish(
-            tag=tag, process_time_s=self._xsens_timestep_receive_time_s, data=data
+            tag=tag, process_time_s=get_time(), data=data
         )
 
         return next_index - 1 if next_index is not None else None
@@ -528,7 +529,7 @@ class MvnAnalyzeProducer(Producer):
                 datagram_counter=datagram_counter,
                 num_items=num_items,
                 time_since_start_s=(
-                    (time_code * 1000) if time_code is not None else None
+                    (time_code * 1000) if time_code is not None else None  # Manual has frame time (F), local time (L), global time (G), time code (T)
                 ),
                 char_id=char_id,
                 num_segments=num_segments,

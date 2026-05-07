@@ -358,7 +358,7 @@ class MvnAnalyzeStream(Stream):
                 sample_size=(1,),
                 is_measure_rate_hz=True,
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-pose"]["counter"],
+                data_notes=self._data_notes["xsens-time"]["counter"],
             )
             self.add_stream(
                 device_name="xsens-pose",
@@ -366,7 +366,15 @@ class MvnAnalyzeStream(Stream):
                 data_type="float32",
                 sample_size=(1,),
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-pose"]["time_since_start_s"],
+                data_notes=self._data_notes["xsens-time"]["time_since_start_s"],
+            )
+            self.add_stream(
+                device_name="xsens-pose",
+                stream_name="toa_s",
+                data_type="float64",
+                sample_size=(1,),
+                sampling_rate_hz=self._sampling_rate_hz,
+                data_notes=self._data_notes["xsens-time"]["toa_s"],
             )
         if is_euler:
             self.add_stream(
@@ -404,7 +412,7 @@ class MvnAnalyzeStream(Stream):
                 sample_size=(1,),
                 is_measure_rate_hz=True,
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-joints"]["counter"],
+                data_notes=self._data_notes["xsens-time"]["counter"],
             )
             self.add_stream(
                 device_name="xsens-joints",
@@ -412,7 +420,15 @@ class MvnAnalyzeStream(Stream):
                 data_type="float32",
                 sample_size=(1,),
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-joints"]["time_since_start_s"],
+                data_notes=self._data_notes["xsens-time"]["time_since_start_s"],
+            )
+            self.add_stream(
+                device_name="xsens-joints",
+                stream_name="toa_s",
+                data_type="float64",
+                sample_size=(1,),
+                sampling_rate_hz=self._sampling_rate_hz,
+                data_notes=self._data_notes["xsens-time"]["toa_s"],
             )
 
         # Center of mass dynamics.
@@ -448,7 +464,7 @@ class MvnAnalyzeStream(Stream):
                 sample_size=(1,),
                 is_measure_rate_hz=True,
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-com"]["counter"],
+                data_notes=self._data_notes["xsens-time"]["counter"],
             )
             self.add_stream(
                 device_name="xsens-com",
@@ -456,7 +472,15 @@ class MvnAnalyzeStream(Stream):
                 data_type="float32",
                 sample_size=(1,),
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-com"]["time_since_start_s"],
+                data_notes=self._data_notes["xsens-time"]["time_since_start_s"],
+            )
+            self.add_stream(
+                device_name="xsens-com",
+                stream_name="toa_s",
+                data_type="float64",
+                sample_size=(1,),
+                sampling_rate_hz=self._sampling_rate_hz,
+                data_notes=self._data_notes["xsens-time"]["toa_s"],
             )
 
         # Liner segment kinematics.
@@ -492,7 +516,7 @@ class MvnAnalyzeStream(Stream):
                 sample_size=(1,),
                 is_measure_rate_hz=True,
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-linear-segments"]["counter"],
+                data_notes=self._data_notes["xsens-time"]["counter"],
             )
             self.add_stream(
                 device_name="xsens-linear-segments",
@@ -500,9 +524,17 @@ class MvnAnalyzeStream(Stream):
                 data_type="float32",
                 sample_size=(1,),
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-linear-segments"][
+                data_notes=self._data_notes["xsens-time"][
                     "time_since_start_s"
                 ],
+            )
+            self.add_stream(
+                device_name="xsens-linear-segments",
+                stream_name="toa_s",
+                data_type="float64",
+                sample_size=(1,),
+                sampling_rate_hz=self._sampling_rate_hz,
+                data_notes=self._data_notes["xsens-time"]["toa_s"],
             )
 
         # Angular segment cinematics.
@@ -538,7 +570,7 @@ class MvnAnalyzeStream(Stream):
                 sample_size=(1,),
                 is_measure_rate_hz=True,
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-angular-segments"]["counter"],
+                data_notes=self._data_notes["xsens-time"]["counter"],
             )
             self.add_stream(
                 device_name="xsens-angular-segments",
@@ -546,9 +578,17 @@ class MvnAnalyzeStream(Stream):
                 data_type="float32",
                 sample_size=(1,),
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-angular-segments"][
+                data_notes=self._data_notes["xsens-time"][
                     "time_since_start_s"
                 ],
+            )
+            self.add_stream(
+                device_name="xsens-angular-segments",
+                stream_name="toa_s",
+                data_type="float64",
+                sample_size=(1,),
+                sampling_rate_hz=self._sampling_rate_hz,
+                data_notes=self._data_notes["xsens-time"]["toa_s"],
             )
 
         # Sensor kinematics.
@@ -602,7 +642,7 @@ class MvnAnalyzeStream(Stream):
                 sample_size=(1,),
                 is_measure_rate_hz=True,
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-motion-trackers"]["counter"],
+                data_notes=self._data_notes["xsens-time"]["counter"],
             )
             self.add_stream(
                 device_name="xsens-motion-trackers",
@@ -610,9 +650,17 @@ class MvnAnalyzeStream(Stream):
                 data_type="float32",
                 sample_size=(1,),
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-motion-trackers"][
+                data_notes=self._data_notes["xsens-time"][
                     "time_since_start_s"
                 ],
+            )
+            self.add_stream(
+                device_name="xsens-motion-trackers",
+                stream_name="toa_s",
+                data_type="float64",
+                sample_size=(1,),
+                sampling_rate_hz=self._sampling_rate_hz,
+                data_notes=self._data_notes["xsens-time"]["toa_s"],
             )
 
         # Time codes sent from the Xsens device.
@@ -641,6 +689,14 @@ class MvnAnalyzeStream(Stream):
                 sample_size=(1,),
                 sampling_rate_hz=self._sampling_rate_hz,
                 data_notes=self._data_notes["xsens-time"]["time_since_start_s"],
+            )
+            self.add_stream(
+                device_name="xsens-time",
+                stream_name="toa_s",
+                data_type="float64",
+                sample_size=(1,),
+                sampling_rate_hz=self._sampling_rate_hz,
+                data_notes=self._data_notes["xsens-time"]["toa_s"],
             )
 
     def get_fps(self) -> dict[str, float | None]:
@@ -698,16 +754,6 @@ class MvnAnalyzeStream(Stream):
                 ),
             ]
         )
-        self._data_notes["xsens-pose"]["counter"] = OrderedDict(
-            [
-                ("Description", "Index of the sample provisioned by MVN Analyze"),
-            ]
-        )
-        self._data_notes["xsens-pose"]["time_since_start_s"] = OrderedDict(
-            [
-                ("Description", "MVN timecode from the datagram metadata"),
-            ]
-        )
 
         # Joints.
         self._data_notes["xsens-joints"]["angle"] = OrderedDict(
@@ -724,16 +770,6 @@ class MvnAnalyzeStream(Stream):
                         for joint_details in self._mvn_joint_setup.values()
                     },
                 ),
-            ]
-        )
-        self._data_notes["xsens-joints"]["counter"] = OrderedDict(
-            [
-                ("Description", "Index of the sample provisioned by MVN Analyze"),
-            ]
-        )
-        self._data_notes["xsens-joints"]["time_since_start_s"] = OrderedDict(
-            [
-                ("Description", "MVN timecode from the datagram metadata"),
             ]
         )
 
@@ -763,16 +799,6 @@ class MvnAnalyzeStream(Stream):
                     "Linear acceleration of the Center of Mass in the Z-up, right-handed coordinate system",
                 ),
                 ("Units", "centimeter/second^2"),
-            ]
-        )
-        self._data_notes["xsens-com"]["counter"] = OrderedDict(
-            [
-                ("Description", "Index of the sample provisioned by MVN Analyze"),
-            ]
-        )
-        self._data_notes["xsens-com"]["time_since_start_s"] = OrderedDict(
-            [
-                ("Description", "MVN timecode from the datagram metadata"),
             ]
         )
 
@@ -816,16 +842,6 @@ class MvnAnalyzeStream(Stream):
                 ),
             ]
         )
-        self._data_notes["xsens-linear-segments"]["counter"] = OrderedDict(
-            [
-                ("Description", "Index of the sample provisioned by MVN Analyze"),
-            ]
-        )
-        self._data_notes["xsens-linear-segments"]["time_since_start_s"] = OrderedDict(
-            [
-                ("Description", "MVN timecode from the datagram metadata"),
-            ]
-        )
 
         # Angular segments.
         self._data_notes["xsens-angular-segments"]["quaternion"] = OrderedDict(
@@ -858,16 +874,6 @@ class MvnAnalyzeStream(Stream):
                     Stream.metadata_data_headings_key,
                     list(self._mvn_segment_setup.values()),
                 ),
-            ]
-        )
-        self._data_notes["xsens-angular-segments"]["counter"] = OrderedDict(
-            [
-                ("Description", "Index of the sample provisioned by MVN Analyze"),
-            ]
-        )
-        self._data_notes["xsens-angular-segments"]["time_since_start_s"] = OrderedDict(
-            [
-                ("Description", "MVN timecode from the datagram metadata"),
             ]
         )
 
@@ -930,16 +936,6 @@ class MvnAnalyzeStream(Stream):
                 ),
             ]
         )
-        self._data_notes["xsens-motion-trackers"]["counter"] = OrderedDict(
-            [
-                ("Description", "Index of the sample provisioned by MVN Analyze"),
-            ]
-        )
-        self._data_notes["xsens-motion-trackers"]["time_since_start_s"] = OrderedDict(
-            [
-                ("Description", "MVN timecode from the datagram metadata"),
-            ]
-        )
 
         # Time.
         self._data_notes["xsens-time"]["counter"] = OrderedDict(
@@ -955,5 +951,10 @@ class MvnAnalyzeStream(Stream):
         self._data_notes["xsens-time"]["time_since_start_s"] = OrderedDict(
             [
                 ("Description", "MVN timecode from the datagram metadata"),
+            ]
+        )
+        self._data_notes["xsens-time"]["toa_s"] = OrderedDict(
+            [
+                ("Description", "Host's time-of-arrival of MVN packet"),
             ]
         )
