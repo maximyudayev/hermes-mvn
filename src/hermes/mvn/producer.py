@@ -149,12 +149,9 @@ class MvnAnalyzeProducer(Producer):
           Most likely non-coliding channels are 11, 15, 20 or 25.
     """
 
-    @classmethod
-    def _log_source_tag(cls) -> str:
-        return "mvn-analyze"
-
     def __init__(
         self,
+        topic: str,
         host_ip: str,
         logging_spec: LoggingSpec,
         mvn_ip: str = IP_LOOPBACK,
@@ -243,6 +240,7 @@ class MvnAnalyzeProducer(Producer):
         }
 
         super().__init__(
+            topic=topic,
             host_ip=host_ip,
             stream_out_spec=stream_out_spec,
             logging_spec=logging_spec,
@@ -419,7 +417,7 @@ class MvnAnalyzeProducer(Producer):
             )
             return None
 
-        tag: str = "%s.data" % (self._log_source_tag())
+        tag: str = "%s.data" % (self.topic)
         self._publish(
             tag=tag, process_time_s=self._xsens_timestep_receive_time_s, data=data
         )

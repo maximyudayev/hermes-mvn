@@ -26,7 +26,7 @@
 # ############
 
 
-host_ip : "127.0.0.1"
+host_ip: "127.0.0.1"
 is_master_broker: True
 
 remote_subscriber_ips: []
@@ -50,17 +50,18 @@ logging_spec:
   dump_video          : False
   dump_audio          : False
 
-video_codec_config_filepath : null
-audio_codec_config_filepath : null
+video_codec_config_filepath: null
+audio_codec_config_filepath: null
 
 
 producer_specs:
   - package: "mvn"
     class: "MvnAnalyzeProducer"
+    topic: "mvn"
     settings:
-      mvn_setup           : "full_body"
+      mvn_setup           : "lower_body"
       sampling_rate_hz    : 60
-      is_euler            : False
+      is_euler            : True
       is_quaternion       : True
       is_joint_angles     : True
       is_linear_segments  : True
