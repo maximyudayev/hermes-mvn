@@ -1722,7 +1722,7 @@ wheels = [
 
 [[package]]
 name = "pysio-hermes"
-version = "0.3.0"
+version = "0.4.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "ffmpeg-python" },
@@ -1758,21 +1758,21 @@ dependencies = [
     { name = "pyzmq", version = "26.2.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.8'" },
     { name = "pyzmq", version = "27.1.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.8'" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/74/55/1ac00dae2eda5b9a679f68569bdf41706758e7d59f29b5395cd892c11345/pysio_hermes-0.3.0.tar.gz", hash = "sha256:25aa0b0a9c1159f3c9bfbab02cb0dfd1e0d4e90330d8e9ca267444386b0c0e18", size = 77888, upload-time = "2026-05-05T17:48:39.698Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/b1/50/33c9b57049e41d072b70742ded5b1d867b844a28c13e735945c78f01051a/pysio_hermes-0.4.0.tar.gz", hash = "sha256:4ffbecddc522d994b2c3dea25c22c91c3ccf651d0d163962c2f2dc0154009613", size = 82077, upload-time = "2026-06-16T20:28:20.373Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/21/55/dbe675258044f16d6f77fa5500b71c39bdc382889791206ffdead692813b/pysio_hermes-0.3.0-py3-none-any.whl", hash = "sha256:c5fba9f21510e84026316457efd54d55c1c4a1567a85cacda65e8aa653229ceb", size = 114534, upload-time = "2026-05-05T17:48:41.532Z" },
+    { url = "https://files.pythonhosted.org/packages/e2/6d/7b76eecf6ca850784eb0a12092d8da9a1563f9a111fc73d6b66da362c05b/pysio_hermes-0.4.0-py3-none-any.whl", hash = "sha256:183ebf768d9e5ec1824576116f98a87d92e41c8b67b72991722d83bbaae93b93", size = 120177, upload-time = "2026-06-16T20:28:21.54Z" },
 ]
 
 [[package]]
 name = "pysio-hermes-mvn"
-version = "0.1.0"
+version = "0.2.0"
 source = { editable = "." }
 dependencies = [
     { name = "pysio-hermes" },
 ]
 
 [package.metadata]
-requires-dist = [{ name = "pysio-hermes" }]
+requires-dist = [{ name = "pysio-hermes", specifier = ">=0.4.0" }]
 
 [[package]]
 name = "python-dateutil"

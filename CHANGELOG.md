@@ -6,7 +6,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## HERMES MVN
+<!-- insertion marker -->
+## [0.2.0](https://github.com/maximyudayev/hermes-mvn/releases/tag/0.2.0) - 2026-06-18
+
+<small>[Compare with 0.1.0](https://github.com/maximyudayev/hermes-mvn/compare/0.1.0...0.2.0)</small>
+
+### Features
+
+- Updated to align with `HERMES>=0.4.0` ([7036b8f](https://github.com/maximyudayev/hermes-mvn/commit/7036b8fb87c68690e5fc5003aa66f14d4e163aad) by Maxim Yudayev).
+- Adds `toa_s` for each modality in the data ([8024be1](https://github.com/maximyudayev/hermes-mvn/commit/8024be1aa88e97215966fc97d683848c4651ab7d) by Maxim Yudayev).
+
 ## [0.1.0](https://github.com/maximyudayev/hermes-mvn/releases/tag/0.1.0) - 2026-05-07
 
 <small>[Compare with first commit](https://github.com/maximyudayev/hermes-mvn/compare/0.0.3...0.1.0)</small>
@@ -17,6 +26,4 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [0.0.3](https://github.com/maximyudayev/hermes-mvn/releases/tag/0.0.3) - 2025-11-25
 - Installation and MVN Analyze setup instructions.
-
-### 0.0.2 <small>October 20, 2025</small>
-- Initial public release of an optional Basler HERMES package.
+- Initial public release of an optional MVN Analyze HERMES package.
