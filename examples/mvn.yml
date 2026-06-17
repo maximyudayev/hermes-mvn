@@ -61,6 +61,7 @@ producer_specs:
     settings:
       mvn_setup           : "lower_body"
       sampling_rate_hz    : 60
+      buf_len             : 10000
       is_euler            : True
       is_quaternion       : True
       is_joint_angles     : True

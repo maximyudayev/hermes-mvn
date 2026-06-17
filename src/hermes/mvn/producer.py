@@ -59,7 +59,7 @@
 from enum import Enum, IntEnum
 import socket
 import struct
-from typing import Any, TypeAlias, TypedDict
+from typing import Any, Optional, TypeAlias, TypedDict
 import numpy as np
 
 from hermes.utils.time_utils import get_time, get_time_s_from_utc_time_no_date_str
@@ -154,24 +154,25 @@ class MvnAnalyzeProducer(Producer):
         topic: str,
         host_ip: str,
         logging_spec: LoggingSpec,
-        mvn_ip: str = IP_LOOPBACK,
-        mvn_port: str = PORT_MVN,
-        mvn_protocol: MvnNetProto | str = MvnNetProto.UDP,
-        mvn_setup: str = "full_body",
-        sampling_rate_hz: int = 60,
-        is_euler: bool = False,
-        is_quaternion: bool = False,
-        is_joint_angles: bool = False,
-        is_linear_segments: bool = False,
-        is_angular_segments: bool = False,
-        is_motion_trackers: bool = False,
-        is_com: bool = False,
-        is_time_code: bool = False,
-        buffer_read_size: int = 2048,
-        port_pub: str = PORT_BACKEND,
-        port_sync: str = PORT_SYNC_HOST,
-        port_killsig: str = PORT_KILL,
-        transmit_delay_sample_period_s: float = float("nan"),
+        mvn_ip: Optional[str] = IP_LOOPBACK,
+        mvn_port: Optional[str] = PORT_MVN,
+        mvn_protocol: Optional[MvnNetProto | str] = MvnNetProto.UDP,
+        mvn_setup: Optional[str] = "full_body",
+        buf_len: Optional[int] = 10000,
+        sampling_rate_hz: Optional[int] = 60,
+        is_euler: Optional[bool] = False,
+        is_quaternion: Optional[bool] = False,
+        is_joint_angles: Optional[bool] = False,
+        is_linear_segments: Optional[bool] = False,
+        is_angular_segments: Optional[bool] = False,
+        is_motion_trackers: Optional[bool] = False,
+        is_com: Optional[bool] = False,
+        is_time_code: Optional[bool] = False,
+        buffer_read_size: Optional[int] = 2048,
+        port_pub: Optional[str] = PORT_BACKEND,
+        port_sync: Optional[str] = PORT_SYNC_HOST,
+        port_killsig: Optional[str] = PORT_KILL,
+        transmit_delay_sample_period_s: Optional[float] = float("nan"),
         **_
     ):
         self._mvn_segment_setup = MVN_SEGMENT_SETUP[mvn_setup]
@@ -228,6 +229,7 @@ class MvnAnalyzeProducer(Producer):
 
         stream_out_spec = {
             "mvn_setup": mvn_setup,
+            "buf_len": buf_len,
             "sampling_rate_hz": sampling_rate_hz,
             "is_euler": is_euler,
             "is_quaternion": is_quaternion,
