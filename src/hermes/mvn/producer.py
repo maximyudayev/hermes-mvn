@@ -371,18 +371,19 @@ class MvnAnalyzeProducer(Producer):
             return None
 
         extra_data = {
-            "counter": metadata["counter"],
-            "time_since_start_s": metadata["time_since_start_s"],
-            "toa_s": self._xsens_timestep_receive_time_s,
+            "counter": np.array([[metadata["counter"]]], dtype=np.uint32),
+            "time_since_start_s": np.array([[metadata["time_since_start_s"]]], dtype=np.float64),
+            "toa_s": np.array([[self._xsens_timestep_receive_time_s]], dtype=np.float64),
         }
 
         data: NewDataDict = {}
 
-        if (
-            MvnMsgType.POSE_EULER == metadata["message_type"]
-            or MvnMsgType.POSE_QUATERNION == metadata["message_type"]
-        ):
-            data["xsens-pose"], next_index = self._process_pose(
+        if MvnMsgType.POSE_EULER == metadata["message_type"]:
+            data["xsens-pose-euler"], next_index = self._process_pose(
+                message, next_index, metadata, extra_data
+            )
+        elif MvnMsgType.POSE_QUATERNION == metadata["message_type"]:
+            data["xsens-pose-quaternion"], next_index = self._process_pose(
                 message, next_index, metadata, extra_data
             )
         elif MvnMsgType.JOINT_ANGLES == metadata["message_type"]:
@@ -578,9 +579,9 @@ class MvnAnalyzeProducer(Producer):
             num_orientation_elements = 4
             orientation_stream_name = "quaternion"
 
-        positions = np.zeros((self._num_segments, 3), dtype=np.float32)
+        positions = np.zeros((1, self._num_segments, 3), dtype=np.float32)
         orientations = np.zeros(
-            (self._num_segments, num_orientation_elements), dtype=np.float32
+            (1, self._num_segments, num_orientation_elements), dtype=np.float32
         )
 
         # Read the position and rotation of each segment.
@@ -616,8 +617,8 @@ class MvnAnalyzeProducer(Producer):
                         # NOTE: segment IDs from Xsens are 1-based,
                         #       but otherwise should be usable as the matrix index.
                         id = self._segment_id_mapping[segment_id]
-                        positions[id, :] = position
-                        orientations[id, :] = orientation
+                        positions[:, id, :] = position
+                        orientations[:, id, :] = orientation
 
         # NOTE: loops over any prop and glove data because we are not processing it yet.
         if metadata["num_props"] is not None and metadata["num_fingers"] is not None:
@@ -657,7 +658,7 @@ class MvnAnalyzeProducer(Producer):
         Returns:
             MvnDataTuple: Parsed joint angles data.
         """
-        joint_angles = np.zeros((self._num_joints, 3), dtype=np.float32)
+        joint_angles = np.zeros((1, self._num_joints, 3), dtype=np.float32)
 
         # Read the ids and rotations of each joint.
         if metadata["num_items"] is not None:
@@ -687,7 +688,7 @@ class MvnAnalyzeProducer(Producer):
                     joint_id = point_id_parent << 16 + point_id_child
 
                     if joint_id in self._joint_id_mapping.keys():
-                        joint_angles[self._joint_id_mapping[joint_id], :] = (
+                        joint_angles[:, self._joint_id_mapping[joint_id], :] = (
                             angle_over_segment
                         )
 
@@ -719,9 +720,9 @@ class MvnAnalyzeProducer(Producer):
         acceleration, next_index = self._read_bytes(message, next_index, 3 * 4)
 
         if position is not None and velocity is not None and acceleration is not None:
-            position = np.array(struct.unpack("!3f", position), np.float32)
-            velocity = np.array(struct.unpack("!3f", velocity), np.float32)
-            acceleration = np.array(struct.unpack("!3f", acceleration), np.float32)
+            position = np.array([struct.unpack("!3f", position)], np.float32)
+            velocity = np.array([struct.unpack("!3f", velocity)], np.float32)
+            acceleration = np.array([struct.unpack("!3f", acceleration)], np.float32)
 
         return {
             "position": position,
@@ -751,9 +752,9 @@ class MvnAnalyzeProducer(Producer):
         Returns:
             MvnDataTuple: Parsed linear kinematics data of body segments.
         """
-        positions = np.zeros((self._num_segments, 3), dtype=np.float32)
-        velocities = np.zeros((self._num_segments, 3), dtype=np.float32)
-        accelerations = np.zeros((self._num_segments, 3), dtype=np.float32)
+        positions = np.zeros((1, self._num_segments, 3), dtype=np.float32)
+        velocities = np.zeros((1, self._num_segments, 3), dtype=np.float32)
+        accelerations = np.zeros((1, self._num_segments, 3), dtype=np.float32)
 
         if metadata["num_items"] is not None:
             for _ in range(metadata["num_items"]):
@@ -779,9 +780,9 @@ class MvnAnalyzeProducer(Producer):
 
                     if segment_id in self._segment_id_mapping.keys():
                         id = self._segment_id_mapping[segment_id]
-                        positions[id, :] = position
-                        velocities[id, :] = velocity
-                        accelerations[id, :] = acceleration
+                        positions[:, id, :] = position
+                        velocities[:, id, :] = velocity
+                        accelerations[:, id, :] = acceleration
 
         # NOTE: loops over any prop and glove data because we are not processing it yet.
         if metadata["num_props"] is not None and metadata["num_fingers"] is not None:
@@ -819,9 +820,9 @@ class MvnAnalyzeProducer(Producer):
         Returns:
             MvnDataTuple: Parsed angular kinematics data of body segments.
         """
-        orientations = np.zeros((self._num_segments, 4), dtype=np.float32)
-        velocities = np.zeros((self._num_segments, 3), dtype=np.float32)
-        accelerations = np.zeros((self._num_segments, 3), dtype=np.float32)
+        orientations = np.zeros((1, self._num_segments, 4), dtype=np.float32)
+        velocities = np.zeros((1, self._num_segments, 3), dtype=np.float32)
+        accelerations = np.zeros((1, self._num_segments, 3), dtype=np.float32)
 
         if metadata["num_items"] is not None:
             for _ in range(metadata["num_items"]):
@@ -849,9 +850,9 @@ class MvnAnalyzeProducer(Producer):
 
                     if segment_id in self._segment_id_mapping.keys():
                         id = self._segment_id_mapping[segment_id]
-                        orientations[id, :] = orientation
-                        velocities[id, :] = velocity
-                        accelerations[id, :] = acceleration
+                        orientations[:, id, :] = orientation
+                        velocities[:, id, :] = velocity
+                        accelerations[:, id, :] = acceleration
 
         # NOTE: loops over any prop and glove data because we are not processing it yet.
         if metadata["num_props"] is not None and metadata["num_fingers"] is not None:
@@ -889,11 +890,11 @@ class MvnAnalyzeProducer(Producer):
         Returns:
             MvnDataTuple: Parsed raw IMU data from the MTw trackers.
         """
-        orientations = np.zeros((self._num_sensors, 4), dtype=np.float32)
-        global_free_accelerations = np.zeros((self._num_sensors, 3), dtype=np.float32)
-        local_accelerations = np.zeros((self._num_sensors, 3), dtype=np.float32)
-        local_gyroscopes = np.zeros((self._num_sensors, 3), dtype=np.float32)
-        local_magnetometers = np.zeros((self._num_sensors, 3), dtype=np.float32)
+        orientations = np.zeros((1, self._num_sensors, 4), dtype=np.float32)
+        global_free_accelerations = np.zeros((1, self._num_sensors, 3), dtype=np.float32)
+        local_accelerations = np.zeros((1, self._num_sensors, 3), dtype=np.float32)
+        local_gyroscopes = np.zeros((1, self._num_sensors, 3), dtype=np.float32)
+        local_magnetometers = np.zeros((1, self._num_sensors, 3), dtype=np.float32)
 
         if metadata["num_items"] is not None:
             for _ in range(metadata["num_items"]):
@@ -941,11 +942,11 @@ class MvnAnalyzeProducer(Producer):
 
                     if segment_id in self._sensor_id_mapping.keys():
                         id = self._sensor_id_mapping[segment_id]
-                        orientations[id, :] = orientation
-                        global_free_accelerations[id, :] = global_free_acceleration
-                        local_accelerations[id, :] = local_acceleration
-                        local_gyroscopes[id, :] = local_gyroscope
-                        local_magnetometers[id, :] = local_magnetometer
+                        orientations[:, id, :] = orientation
+                        global_free_accelerations[:, id, :] = global_free_acceleration
+                        local_accelerations[:, id, :] = local_acceleration
+                        local_gyroscopes[:, id, :] = local_gyroscope
+                        local_magnetometers[:, id, :] = local_magnetometer
 
         return {
             "quaternion": orientations,
@@ -999,7 +1000,7 @@ class MvnAnalyzeProducer(Producer):
                     time_code_str, input_time_format="%H:%M:%S.%f"
                 )
 
-        return {"timestamp_s": time_code_s, **extra_data}, next_index
+        return {"timestamp_s": np.array([[time_code_s]], dtype=np.float64), **extra_data}, next_index
 
     def _stop_new_data(self) -> None:
         self._socket.close()

@@ -344,9 +344,18 @@ class MvnAnalyzeStream(Stream):
         self._define_data_notes()
 
         # Segment positions and orientations.
-        if is_euler or is_quaternion:
+        if is_euler:
             self.add_stream(
-                device_name="xsens-pose",
+                device_name="xsens-pose-euler",
+                stream_name="euler",
+                data_type="float32",
+                sample_size=[self._num_segments, 3],
+                buf_len=buf_len,
+                sampling_rate_hz=self._sampling_rate_hz,
+                data_notes=self._data_notes["xsens-pose"]["euler"],
+            )
+            self.add_stream(
+                device_name="xsens-pose-euler",
                 stream_name="position",
                 data_type="float32",
                 sample_size=[self._num_segments, 3],
@@ -355,7 +364,7 @@ class MvnAnalyzeStream(Stream):
                 data_notes=self._data_notes["xsens-pose"]["position"],
             )
             self.add_stream(
-                device_name="xsens-pose",
+                device_name="xsens-pose-euler",
                 stream_name="counter",
                 data_type="uint32",
                 sample_size=[1],
@@ -365,7 +374,7 @@ class MvnAnalyzeStream(Stream):
                 data_notes=self._data_notes["xsens-time"]["counter"],
             )
             self.add_stream(
-                device_name="xsens-pose",
+                device_name="xsens-pose-euler",
                 stream_name="time_since_start_s",
                 data_type="float64",
                 sample_size=[1],
@@ -374,7 +383,7 @@ class MvnAnalyzeStream(Stream):
                 data_notes=self._data_notes["xsens-time"]["time_since_start_s"],
             )
             self.add_stream(
-                device_name="xsens-pose",
+                device_name="xsens-pose-euler",
                 stream_name="toa_s",
                 data_type="float64",
                 sample_size=[1],
@@ -382,25 +391,53 @@ class MvnAnalyzeStream(Stream):
                 sampling_rate_hz=self._sampling_rate_hz,
                 data_notes=self._data_notes["xsens-time"]["toa_s"],
             )
-        if is_euler:
-            self.add_stream(
-                device_name="xsens-pose",
-                stream_name="euler",
-                data_type="float32",
-                sample_size=[self._num_segments, 3],
-                buf_len=buf_len,
-                sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-pose"]["euler"],
-            )
+
         if is_quaternion:
             self.add_stream(
-                device_name="xsens-pose",
+                device_name="xsens-pose-quaternion",
                 stream_name="quaternion",
                 data_type="float32",
                 sample_size=[self._num_segments, 4],
                 buf_len=buf_len,
                 sampling_rate_hz=self._sampling_rate_hz,
                 data_notes=self._data_notes["xsens-pose"]["quaternion"],
+            )
+            self.add_stream(
+                device_name="xsens-pose-quaternion",
+                stream_name="position",
+                data_type="float32",
+                sample_size=[self._num_segments, 3],
+                buf_len=buf_len,
+                sampling_rate_hz=self._sampling_rate_hz,
+                data_notes=self._data_notes["xsens-pose"]["position"],
+            )
+            self.add_stream(
+                device_name="xsens-pose-quaternion",
+                stream_name="counter",
+                data_type="uint32",
+                sample_size=[1],
+                buf_len=buf_len,
+                is_measure_rate_hz=True,
+                sampling_rate_hz=self._sampling_rate_hz,
+                data_notes=self._data_notes["xsens-time"]["counter"],
+            )
+            self.add_stream(
+                device_name="xsens-pose-quaternion",
+                stream_name="time_since_start_s",
+                data_type="float64",
+                sample_size=[1],
+                buf_len=buf_len,
+                sampling_rate_hz=self._sampling_rate_hz,
+                data_notes=self._data_notes["xsens-time"]["time_since_start_s"],
+            )
+            self.add_stream(
+                device_name="xsens-pose-quaternion",
+                stream_name="toa_s",
+                data_type="float64",
+                sample_size=[1],
+                buf_len=buf_len,
+                sampling_rate_hz=self._sampling_rate_hz,
+                data_notes=self._data_notes["xsens-time"]["toa_s"],
             )
 
         # Joint angles.
