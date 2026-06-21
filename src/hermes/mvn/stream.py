@@ -346,436 +346,436 @@ class MvnAnalyzeStream(Stream):
         # Segment positions and orientations.
         if is_euler:
             self.add_stream(
-                device_name="xsens-pose-euler",
+                device_name="xsens_pose_euler",
                 stream_name="euler",
                 data_type="float32",
                 sample_size=[self._num_segments, 3],
                 buf_len=buf_len,
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-pose"]["euler"],
+                data_notes=self._data_notes["xsens_pose"]["euler"],
             )
             self.add_stream(
-                device_name="xsens-pose-euler",
+                device_name="xsens_pose_euler",
                 stream_name="position",
                 data_type="float32",
                 sample_size=[self._num_segments, 3],
                 buf_len=buf_len,
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-pose"]["position"],
+                data_notes=self._data_notes["xsens_pose"]["position"],
             )
             self.add_stream(
-                device_name="xsens-pose-euler",
+                device_name="xsens_pose_euler",
                 stream_name="counter",
                 data_type="uint32",
                 sample_size=[1],
                 buf_len=buf_len,
                 is_measure_rate_hz=True,
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-time"]["counter"],
+                data_notes=self._data_notes["xsens_time"]["counter"],
             )
             self.add_stream(
-                device_name="xsens-pose-euler",
+                device_name="xsens_pose_euler",
                 stream_name="time_since_start_s",
                 data_type="float64",
                 sample_size=[1],
                 buf_len=buf_len,
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-time"]["time_since_start_s"],
+                data_notes=self._data_notes["xsens_time"]["time_since_start_s"],
             )
             self.add_stream(
-                device_name="xsens-pose-euler",
+                device_name="xsens_pose_euler",
                 stream_name="toa_s",
                 data_type="float64",
                 sample_size=[1],
                 buf_len=buf_len,
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-time"]["toa_s"],
+                data_notes=self._data_notes["xsens_time"]["toa_s"],
             )
 
         if is_quaternion:
             self.add_stream(
-                device_name="xsens-pose-quaternion",
+                device_name="xsens_pose_quaternion",
                 stream_name="quaternion",
                 data_type="float32",
                 sample_size=[self._num_segments, 4],
                 buf_len=buf_len,
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-pose"]["quaternion"],
+                data_notes=self._data_notes["xsens_pose"]["quaternion"],
             )
             self.add_stream(
-                device_name="xsens-pose-quaternion",
+                device_name="xsens_pose_quaternion",
                 stream_name="position",
                 data_type="float32",
                 sample_size=[self._num_segments, 3],
                 buf_len=buf_len,
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-pose"]["position"],
+                data_notes=self._data_notes["xsens_pose"]["position"],
             )
             self.add_stream(
-                device_name="xsens-pose-quaternion",
+                device_name="xsens_pose_quaternion",
                 stream_name="counter",
                 data_type="uint32",
                 sample_size=[1],
                 buf_len=buf_len,
                 is_measure_rate_hz=True,
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-time"]["counter"],
+                data_notes=self._data_notes["xsens_time"]["counter"],
             )
             self.add_stream(
-                device_name="xsens-pose-quaternion",
+                device_name="xsens_pose_quaternion",
                 stream_name="time_since_start_s",
                 data_type="float64",
                 sample_size=[1],
                 buf_len=buf_len,
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-time"]["time_since_start_s"],
+                data_notes=self._data_notes["xsens_time"]["time_since_start_s"],
             )
             self.add_stream(
-                device_name="xsens-pose-quaternion",
+                device_name="xsens_pose_quaternion",
                 stream_name="toa_s",
                 data_type="float64",
                 sample_size=[1],
                 buf_len=buf_len,
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-time"]["toa_s"],
+                data_notes=self._data_notes["xsens_time"]["toa_s"],
             )
 
         # Joint angles.
         if is_joint_angles:
             self.add_stream(
-                device_name="xsens-joints",
+                device_name="xsens_joints",
                 stream_name="angle",
                 data_type="float32",
                 sample_size=[self._num_joints, 3],
                 buf_len=buf_len,
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-joints"]["angle"],
+                data_notes=self._data_notes["xsens_joints"]["angle"],
             )
             self.add_stream(
-                device_name="xsens-joints",
+                device_name="xsens_joints",
                 stream_name="counter",
                 data_type="uint32",
                 sample_size=[1],
                 buf_len=buf_len,
                 is_measure_rate_hz=True,
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-time"]["counter"],
+                data_notes=self._data_notes["xsens_time"]["counter"],
             )
             self.add_stream(
-                device_name="xsens-joints",
+                device_name="xsens_joints",
                 stream_name="time_since_start_s",
                 data_type="float64",
                 sample_size=[1],
                 buf_len=buf_len,
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-time"]["time_since_start_s"],
+                data_notes=self._data_notes["xsens_time"]["time_since_start_s"],
             )
             self.add_stream(
-                device_name="xsens-joints",
+                device_name="xsens_joints",
                 stream_name="toa_s",
                 data_type="float64",
                 sample_size=[1],
                 buf_len=buf_len,
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-time"]["toa_s"],
+                data_notes=self._data_notes["xsens_time"]["toa_s"],
             )
 
         # Center of mass dynamics.
         if is_com:
             self.add_stream(
-                device_name="xsens-com",
+                device_name="xsens_com",
                 stream_name="position",
                 data_type="float32",
                 sample_size=[3],
                 buf_len=buf_len,
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-com"]["position"],
+                data_notes=self._data_notes["xsens_com"]["position"],
             )
             self.add_stream(
-                device_name="xsens-com",
+                device_name="xsens_com",
                 stream_name="velocity",
                 data_type="float32",
                 sample_size=[3],
                 buf_len=buf_len,
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-com"]["velocity"],
+                data_notes=self._data_notes["xsens_com"]["velocity"],
             )
             self.add_stream(
-                device_name="xsens-com",
+                device_name="xsens_com",
                 stream_name="acceleration",
                 data_type="float32",
                 sample_size=[3],
                 buf_len=buf_len,
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-com"]["acceleration"],
+                data_notes=self._data_notes["xsens_com"]["acceleration"],
             )
             self.add_stream(
-                device_name="xsens-com",
+                device_name="xsens_com",
                 stream_name="counter",
                 data_type="uint32",
                 sample_size=[1],
                 buf_len=buf_len,
                 is_measure_rate_hz=True,
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-time"]["counter"],
+                data_notes=self._data_notes["xsens_time"]["counter"],
             )
             self.add_stream(
-                device_name="xsens-com",
+                device_name="xsens_com",
                 stream_name="time_since_start_s",
                 data_type="float64",
                 sample_size=[1],
                 buf_len=buf_len,
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-time"]["time_since_start_s"],
+                data_notes=self._data_notes["xsens_time"]["time_since_start_s"],
             )
             self.add_stream(
-                device_name="xsens-com",
+                device_name="xsens_com",
                 stream_name="toa_s",
                 data_type="float64",
                 sample_size=[1],
                 buf_len=buf_len,
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-time"]["toa_s"],
+                data_notes=self._data_notes["xsens_time"]["toa_s"],
             )
 
         # Liner segment kinematics.
         if is_linear_segments:
             self.add_stream(
-                device_name="xsens-linear-segments",
+                device_name="xsens_linear_segments",
                 stream_name="position",
                 data_type="float32",
                 sample_size=[self._num_segments, 3],
                 buf_len=buf_len,
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-linear-segments"]["position"],
+                data_notes=self._data_notes["xsens_linear_segments"]["position"],
             )
             self.add_stream(
-                device_name="xsens-linear-segments",
+                device_name="xsens_linear_segments",
                 stream_name="velocity",
                 data_type="float32",
                 sample_size=[self._num_segments, 3],
                 buf_len=buf_len,
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-linear-segments"]["velocity"],
+                data_notes=self._data_notes["xsens_linear_segments"]["velocity"],
             )
             self.add_stream(
-                device_name="xsens-linear-segments",
+                device_name="xsens_linear_segments",
                 stream_name="acceleration",
                 data_type="float32",
                 sample_size=[self._num_segments, 3],
                 buf_len=buf_len,
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-linear-segments"]["acceleration"],
+                data_notes=self._data_notes["xsens_linear_segments"]["acceleration"],
             )
             self.add_stream(
-                device_name="xsens-linear-segments",
+                device_name="xsens_linear_segments",
                 stream_name="counter",
                 data_type="uint32",
                 sample_size=[1],
                 buf_len=buf_len,
                 is_measure_rate_hz=True,
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-time"]["counter"],
+                data_notes=self._data_notes["xsens_time"]["counter"],
             )
             self.add_stream(
-                device_name="xsens-linear-segments",
+                device_name="xsens_linear_segments",
                 stream_name="time_since_start_s",
                 data_type="float64",
                 sample_size=[1],
                 buf_len=buf_len,
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-time"][
+                data_notes=self._data_notes["xsens_time"][
                     "time_since_start_s"
                 ],
             )
             self.add_stream(
-                device_name="xsens-linear-segments",
+                device_name="xsens_linear_segments",
                 stream_name="toa_s",
                 data_type="float64",
                 sample_size=[1],
                 buf_len=buf_len,
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-time"]["toa_s"],
+                data_notes=self._data_notes["xsens_time"]["toa_s"],
             )
 
         # Angular segment cinematics.
         if is_angular_segments:
             self.add_stream(
-                device_name="xsens-angular-segments",
+                device_name="xsens_angular_segments",
                 stream_name="quaternion",
                 data_type="float32",
                 sample_size=[self._num_segments, 4],
                 buf_len=buf_len,
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-angular-segments"]["quaternion"],
+                data_notes=self._data_notes["xsens_angular_segments"]["quaternion"],
             )
             self.add_stream(
-                device_name="xsens-angular-segments",
+                device_name="xsens_angular_segments",
                 stream_name="velocity",
                 data_type="float32",
                 sample_size=[self._num_segments, 3],
                 buf_len=buf_len,
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-angular-segments"]["velocity"],
+                data_notes=self._data_notes["xsens_angular_segments"]["velocity"],
             )
             self.add_stream(
-                device_name="xsens-angular-segments",
+                device_name="xsens_angular_segments",
                 stream_name="acceleration",
                 data_type="float32",
                 sample_size=[self._num_segments, 3],
                 buf_len=buf_len,
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-angular-segments"]["acceleration"],
+                data_notes=self._data_notes["xsens_angular_segments"]["acceleration"],
             )
             self.add_stream(
-                device_name="xsens-angular-segments",
+                device_name="xsens_angular_segments",
                 stream_name="counter",
                 data_type="uint32",
                 sample_size=[1],
                 buf_len=buf_len,
                 is_measure_rate_hz=True,
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-time"]["counter"],
+                data_notes=self._data_notes["xsens_time"]["counter"],
             )
             self.add_stream(
-                device_name="xsens-angular-segments",
+                device_name="xsens_angular_segments",
                 stream_name="time_since_start_s",
                 data_type="float64",
                 sample_size=[1],
                 buf_len=buf_len,
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-time"][
+                data_notes=self._data_notes["xsens_time"][
                     "time_since_start_s"
                 ],
             )
             self.add_stream(
-                device_name="xsens-angular-segments",
+                device_name="xsens_angular_segments",
                 stream_name="toa_s",
                 data_type="float64",
                 sample_size=[1],
                 buf_len=buf_len,
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-time"]["toa_s"],
+                data_notes=self._data_notes["xsens_time"]["toa_s"],
             )
 
         # Sensor kinematics.
         if is_motion_trackers:
             self.add_stream(
-                device_name="xsens-motion-trackers",
+                device_name="xsens_motion_trackers",
                 stream_name="quaternion",
                 data_type="float32",
                 sample_size=[self._num_sensors, 4],
                 buf_len=buf_len,
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-motion-trackers"]["quaternion"],
+                data_notes=self._data_notes["xsens_motion_trackers"]["quaternion"],
             )
             self.add_stream(
-                device_name="xsens-motion-trackers",
+                device_name="xsens_motion_trackers",
                 stream_name="free_acceleration",
                 data_type="float32",
                 sample_size=[self._num_sensors, 3],
                 buf_len=buf_len,
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-motion-trackers"][
+                data_notes=self._data_notes["xsens_motion_trackers"][
                     "free_acceleration"
                 ],
             )
             self.add_stream(
-                device_name="xsens-motion-trackers",
+                device_name="xsens_motion_trackers",
                 stream_name="acceleration",
                 data_type="float32",
                 sample_size=[self._num_sensors, 3],
                 buf_len=buf_len,
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-motion-trackers"]["acceleration"],
+                data_notes=self._data_notes["xsens_motion_trackers"]["acceleration"],
             )
             self.add_stream(
-                device_name="xsens-motion-trackers",
+                device_name="xsens_motion_trackers",
                 stream_name="gyroscope",
                 data_type="float32",
                 sample_size=[self._num_sensors, 3],
                 buf_len=buf_len,
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-motion-trackers"]["gyroscope"],
+                data_notes=self._data_notes["xsens_motion_trackers"]["gyroscope"],
             )
             self.add_stream(
-                device_name="xsens-motion-trackers",
+                device_name="xsens_motion_trackers",
                 stream_name="magnetometer",
                 data_type="float32",
                 sample_size=[self._num_sensors, 3],
                 buf_len=buf_len,
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-motion-trackers"]["magnetometer"],
+                data_notes=self._data_notes["xsens_motion_trackers"]["magnetometer"],
             )
             self.add_stream(
-                device_name="xsens-motion-trackers",
+                device_name="xsens_motion_trackers",
                 stream_name="counter",
                 data_type="uint32",
                 sample_size=[1],
                 buf_len=buf_len,
                 is_measure_rate_hz=True,
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-time"]["counter"],
+                data_notes=self._data_notes["xsens_time"]["counter"],
             )
             self.add_stream(
-                device_name="xsens-motion-trackers",
+                device_name="xsens_motion_trackers",
                 stream_name="time_since_start_s",
                 data_type="float64",
                 sample_size=[1],
                 buf_len=buf_len,
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-time"][
+                data_notes=self._data_notes["xsens_time"][
                     "time_since_start_s"
                 ],
             )
             self.add_stream(
-                device_name="xsens-motion-trackers",
+                device_name="xsens_motion_trackers",
                 stream_name="toa_s",
                 data_type="float64",
                 sample_size=[1],
                 buf_len=buf_len,
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-time"]["toa_s"],
+                data_notes=self._data_notes["xsens_time"]["toa_s"],
             )
 
         # Time codes sent from the Xsens device.
         if is_time_code:
             self.add_stream(
-                device_name="xsens-time",
+                device_name="xsens_time",
                 stream_name="timestamp_s",
                 data_type="float64",
                 sample_size=[1],
                 buf_len=buf_len,
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-time"]["timestamp_s"],
+                data_notes=self._data_notes["xsens_time"]["timestamp_s"],
             )
             self.add_stream(
-                device_name="xsens-time",
+                device_name="xsens_time",
                 stream_name="counter",
                 data_type="uint32",
                 sample_size=[1],
                 buf_len=buf_len,
                 is_measure_rate_hz=True,
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-time"]["counter"],
+                data_notes=self._data_notes["xsens_time"]["counter"],
             )
             self.add_stream(
-                device_name="xsens-time",
+                device_name="xsens_time",
                 stream_name="time_since_start_s",
                 data_type="float64",
                 sample_size=[1],
                 buf_len=buf_len,
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-time"]["time_since_start_s"],
+                data_notes=self._data_notes["xsens_time"]["time_since_start_s"],
             )
             self.add_stream(
-                device_name="xsens-time",
+                device_name="xsens_time",
                 stream_name="toa_s",
                 data_type="float64",
                 sample_size=[1],
                 buf_len=buf_len,
                 sampling_rate_hz=self._sampling_rate_hz,
-                data_notes=self._data_notes["xsens-time"]["toa_s"],
+                data_notes=self._data_notes["xsens_time"]["toa_s"],
             )
 
     def get_fps(self) -> dict[str, float | None]:
@@ -786,16 +786,16 @@ class MvnAnalyzeStream(Stream):
 
     def _define_data_notes(self):
         self._data_notes = {}
-        self._data_notes.setdefault("xsens-pose", {})
-        self._data_notes.setdefault("xsens-joints", {})
-        self._data_notes.setdefault("xsens-com", {})
-        self._data_notes.setdefault("xsens-linear-segments", {})
-        self._data_notes.setdefault("xsens-angular-segments", {})
-        self._data_notes.setdefault("xsens-motion-trackers", {})
-        self._data_notes.setdefault("xsens-time", {})
+        self._data_notes.setdefault("xsens_pose", {})
+        self._data_notes.setdefault("xsens_joints", {})
+        self._data_notes.setdefault("xsens_com", {})
+        self._data_notes.setdefault("xsens_linear_segments", {})
+        self._data_notes.setdefault("xsens_angular_segments", {})
+        self._data_notes.setdefault("xsens_motion_trackers", {})
+        self._data_notes.setdefault("xsens_time", {})
 
         # 3D Pose.
-        self._data_notes["xsens-pose"]["position"] = OrderedDict(
+        self._data_notes["xsens_pose"]["position"] = OrderedDict(
             [
                 (
                     "Description",
@@ -808,7 +808,7 @@ class MvnAnalyzeStream(Stream):
                 ),
             ]
         )
-        self._data_notes["xsens-pose"]["euler"] = OrderedDict(
+        self._data_notes["xsens_pose"]["euler"] = OrderedDict(
             [
                 (
                     "Description",
@@ -821,7 +821,7 @@ class MvnAnalyzeStream(Stream):
                 ),
             ]
         )
-        self._data_notes["xsens-pose"]["quaternion"] = OrderedDict(
+        self._data_notes["xsens_pose"]["quaternion"] = OrderedDict(
             [
                 (
                     "Description",
@@ -835,7 +835,7 @@ class MvnAnalyzeStream(Stream):
         )
 
         # Joints.
-        self._data_notes["xsens-joints"]["angle"] = OrderedDict(
+        self._data_notes["xsens_joints"]["angle"] = OrderedDict(
             [
                 (
                     "Description",
@@ -853,7 +853,7 @@ class MvnAnalyzeStream(Stream):
         )
 
         # Center of mass.
-        self._data_notes["xsens-com"]["position"] = OrderedDict(
+        self._data_notes["xsens_com"]["position"] = OrderedDict(
             [
                 (
                     "Description",
@@ -862,7 +862,7 @@ class MvnAnalyzeStream(Stream):
                 ("Units", "centimeter"),
             ]
         )
-        self._data_notes["xsens-com"]["velocity"] = OrderedDict(
+        self._data_notes["xsens_com"]["velocity"] = OrderedDict(
             [
                 (
                     "Description",
@@ -871,7 +871,7 @@ class MvnAnalyzeStream(Stream):
                 ("Units", "centimeter/second"),
             ]
         )
-        self._data_notes["xsens-com"]["acceleration"] = OrderedDict(
+        self._data_notes["xsens_com"]["acceleration"] = OrderedDict(
             [
                 (
                     "Description",
@@ -882,7 +882,7 @@ class MvnAnalyzeStream(Stream):
         )
 
         # Linear segments.
-        self._data_notes["xsens-linear-segments"]["position"] = OrderedDict(
+        self._data_notes["xsens_linear_segments"]["position"] = OrderedDict(
             [
                 (
                     "Description",
@@ -895,7 +895,7 @@ class MvnAnalyzeStream(Stream):
                 ),
             ]
         )
-        self._data_notes["xsens-linear-segments"]["velocity"] = OrderedDict(
+        self._data_notes["xsens_linear_segments"]["velocity"] = OrderedDict(
             [
                 (
                     "Description",
@@ -908,7 +908,7 @@ class MvnAnalyzeStream(Stream):
                 ),
             ]
         )
-        self._data_notes["xsens-linear-segments"]["acceleration"] = OrderedDict(
+        self._data_notes["xsens_linear_segments"]["acceleration"] = OrderedDict(
             [
                 (
                     "Description",
@@ -923,7 +923,7 @@ class MvnAnalyzeStream(Stream):
         )
 
         # Angular segments.
-        self._data_notes["xsens-angular-segments"]["quaternion"] = OrderedDict(
+        self._data_notes["xsens_angular_segments"]["quaternion"] = OrderedDict(
             [
                 (
                     "Description",
@@ -935,7 +935,7 @@ class MvnAnalyzeStream(Stream):
                 ),
             ]
         )
-        self._data_notes["xsens-angular-segments"]["velocity"] = OrderedDict(
+        self._data_notes["xsens_angular_segments"]["velocity"] = OrderedDict(
             [
                 ("Description", "Angular velocity of the segment"),
                 ("Units", "degree/second"),
@@ -945,7 +945,7 @@ class MvnAnalyzeStream(Stream):
                 ),
             ]
         )
-        self._data_notes["xsens-angular-segments"]["acceleration"] = OrderedDict(
+        self._data_notes["xsens_angular_segments"]["acceleration"] = OrderedDict(
             [
                 ("Description", "Angular acceleration of the segment"),
                 ("Units", "degree/second^2"),
@@ -957,7 +957,7 @@ class MvnAnalyzeStream(Stream):
         )
 
         # Sensors.
-        self._data_notes["xsens-motion-trackers"]["quaternion"] = OrderedDict(
+        self._data_notes["xsens_motion_trackers"]["quaternion"] = OrderedDict(
             [
                 (
                     "Description",
@@ -969,7 +969,7 @@ class MvnAnalyzeStream(Stream):
                 ),
             ]
         )
-        self._data_notes["xsens-motion-trackers"]["free_acceleration"] = OrderedDict(
+        self._data_notes["xsens_motion_trackers"]["free_acceleration"] = OrderedDict(
             [
                 (
                     "Description",
@@ -982,7 +982,7 @@ class MvnAnalyzeStream(Stream):
                 ),
             ]
         )
-        self._data_notes["xsens-motion-trackers"]["acceleration"] = OrderedDict(
+        self._data_notes["xsens_motion_trackers"]["acceleration"] = OrderedDict(
             [
                 ("Description", "Local raw linear acceleration of the IMU"),
                 ("Units", "meter/second^2"),
@@ -992,7 +992,7 @@ class MvnAnalyzeStream(Stream):
                 ),
             ]
         )
-        self._data_notes["xsens-motion-trackers"]["gyroscope"] = OrderedDict(
+        self._data_notes["xsens_motion_trackers"]["gyroscope"] = OrderedDict(
             [
                 ("Description", "Local raw angular velocity of the IMU"),
                 ("Units", "meter/second"),
@@ -1002,7 +1002,7 @@ class MvnAnalyzeStream(Stream):
                 ),
             ]
         )
-        self._data_notes["xsens-motion-trackers"]["magnetometer"] = OrderedDict(
+        self._data_notes["xsens_motion_trackers"]["magnetometer"] = OrderedDict(
             [
                 (
                     "Description",
@@ -1017,22 +1017,22 @@ class MvnAnalyzeStream(Stream):
         )
 
         # Time.
-        self._data_notes["xsens-time"]["counter"] = OrderedDict(
+        self._data_notes["xsens_time"]["counter"] = OrderedDict(
             [
                 ("Description", "Index of the sample provisioned by MVN Analyze"),
             ]
         )
-        self._data_notes["xsens-time"]["timestamp_s"] = OrderedDict(
+        self._data_notes["xsens_time"]["timestamp_s"] = OrderedDict(
             [
                 ("Description", "Time of sampling of the data by MVN Analyze"),
             ]
         )
-        self._data_notes["xsens-time"]["time_since_start_s"] = OrderedDict(
+        self._data_notes["xsens_time"]["time_since_start_s"] = OrderedDict(
             [
                 ("Description", "MVN timecode from the datagram metadata"),
             ]
         )
-        self._data_notes["xsens-time"]["toa_s"] = OrderedDict(
+        self._data_notes["xsens_time"]["toa_s"] = OrderedDict(
             [
                 ("Description", "Host's time-of-arrival of MVN packet"),
             ]

@@ -379,35 +379,35 @@ class MvnAnalyzeProducer(Producer):
         data: NewDataDict = {}
 
         if MvnMsgType.POSE_EULER == metadata["message_type"]:
-            data["xsens-pose-euler"], next_index = self._process_pose(
+            data["xsens_pose_euler"], next_index = self._process_pose(
                 message, next_index, metadata, extra_data
             )
         elif MvnMsgType.POSE_QUATERNION == metadata["message_type"]:
-            data["xsens-pose-quaternion"], next_index = self._process_pose(
+            data["xsens_pose_quaternion"], next_index = self._process_pose(
                 message, next_index, metadata, extra_data
             )
         elif MvnMsgType.JOINT_ANGLES == metadata["message_type"]:
-            data["xsens-joints"], next_index = self._process_joint_angles(
+            data["xsens_joints"], next_index = self._process_joint_angles(
                 message, next_index, metadata, extra_data
             )
         elif MvnMsgType.CENTER_OF_MASS == metadata["message_type"]:
-            data["xsens-com"], next_index = self._process_com(
+            data["xsens_com"], next_index = self._process_com(
                 message, next_index, metadata, extra_data
             )
         elif MvnMsgType.LINEAR_SEGMENTS == metadata["message_type"]:
-            data["xsens-linear-segments"], next_index = self._process_linear_segments(
+            data["xsens_linear_segments"], next_index = self._process_linear_segments(
                 message, next_index, metadata, extra_data
             )
         elif MvnMsgType.ANGULAR_SEGMENTS == metadata["message_type"]:
-            data["xsens-angular-segments"], next_index = self._process_angular_segments(
+            data["xsens_angular_segments"], next_index = self._process_angular_segments(
                 message, next_index, metadata, extra_data
             )
         elif MvnMsgType.MOTION_TRACKERS == metadata["message_type"]:
-            data["xsens-motion-trackers"], next_index = self._process_motion_trackers(
+            data["xsens_motion_trackers"], next_index = self._process_motion_trackers(
                 message, next_index, metadata, extra_data
             )
         elif MvnMsgType.TIME_CODE == metadata["message_type"]:
-            data["xsens-time"], next_index = self._process_time_code(
+            data["xsens_time"], next_index = self._process_time_code(
                 message, next_index, metadata, extra_data
             )
         else:
