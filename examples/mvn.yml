@@ -39,6 +39,7 @@ remote_kill_ip: null
 
 logging_spec:
   stream_period_s     : 30
+  is_quiet            : False
   
   stream_hdf5         : True
   stream_csv          : False
@@ -61,7 +62,7 @@ producer_specs:
     settings:
       mvn_setup           : "lower_body"
       sampling_rate_hz    : 60
-      buf_len             : 10000
+      buf_len             : 6000
       is_euler            : True
       is_quaternion       : True
       is_joint_angles     : True

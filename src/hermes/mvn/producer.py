@@ -73,8 +73,8 @@ from hermes.utils.zmq_utils import (
 )
 from hermes.base.nodes.producer import Producer
 
-from hermes.mvn.stream import MvnAnalyzeStream
-from hermes.mvn.stream import MVN_JOINT_SETUP, MVN_SEGMENT_SETUP, MVN_SENSOR_SETUP
+from mvn.src.hermes.mvn.data_container import MvnAnalyzeDataContainer
+from mvn.src.hermes.mvn.data_container import MVN_JOINT_SETUP, MVN_SEGMENT_SETUP, MVN_SENSOR_SETUP
 
 
 class MvnNetProto(str, Enum):
@@ -158,7 +158,7 @@ class MvnAnalyzeProducer(Producer):
         mvn_port: Optional[str] = PORT_MVN,
         mvn_protocol: Optional[MvnNetProto | str] = MvnNetProto.UDP,
         mvn_setup: Optional[str] = "full_body",
-        buf_len: Optional[int] = 10000,
+        buf_len: Optional[int] = 6000,
         sampling_rate_hz: Optional[int] = 60,
         is_euler: Optional[bool] = False,
         is_quaternion: Optional[bool] = False,
@@ -227,7 +227,7 @@ class MvnAnalyzeProducer(Producer):
             None  # When the first Xsens message for an Xsens timestep was received.
         )
 
-        stream_out_spec = {
+        data_out_spec = {
             "mvn_setup": mvn_setup,
             "buf_len": buf_len,
             "sampling_rate_hz": sampling_rate_hz,
@@ -244,7 +244,7 @@ class MvnAnalyzeProducer(Producer):
         super().__init__(
             topic=topic,
             host_ip=host_ip,
-            stream_out_spec=stream_out_spec,
+            data_out_spec=data_out_spec,
             logging_spec=logging_spec,
             sampling_rate_hz=sampling_rate_hz,
             port_pub=port_pub,
@@ -254,8 +254,8 @@ class MvnAnalyzeProducer(Producer):
         )
 
     @classmethod
-    def create_stream(cls, stream_spec: dict) -> MvnAnalyzeStream:
-        return MvnAnalyzeStream(**stream_spec)
+    def create_data_container(cls, data_spec: dict) -> MvnAnalyzeDataContainer:
+        return MvnAnalyzeDataContainer(**data_spec)
 
     def _ping_device(self) -> None:
         return None

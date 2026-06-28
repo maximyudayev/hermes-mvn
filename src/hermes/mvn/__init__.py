@@ -1,2 +1,2 @@
-from .stream import MvnAnalyzeStream
+from .data_container import MvnAnalyzeDataContainer
 from .producer import MvnAnalyzeProducer
