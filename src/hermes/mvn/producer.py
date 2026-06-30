@@ -63,7 +63,7 @@ from typing import Any, Optional, TypeAlias, TypedDict
 import numpy as np
 
 from hermes.utils.time_utils import get_time, get_time_s_from_utc_time_no_date_str
-from hermes.utils.types import LoggingSpec, NewDataDict
+from hermes.utils.types import LoggingSpec, NewData
 from hermes.utils.zmq_utils import (
     IP_LOOPBACK,
     PORT_MVN,
@@ -376,7 +376,7 @@ class MvnAnalyzeProducer(Producer):
             "toa_s": np.array([[self._xsens_timestep_receive_time_s]], dtype=np.float64),
         }
 
-        data: NewDataDict = {}
+        data: NewData = {}
 
         if MvnMsgType.POSE_EULER == metadata["message_type"]:
             data["xsens_pose_euler"], next_index = self._process_pose(
