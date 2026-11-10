@@ -684,7 +684,7 @@ class MvnAnalyzeProducer(Producer):
                     )
 
                     # Convert these id's into mapping into the numpy array.
-                    joint_id = point_id_parent << 16 + point_id_child
+                    joint_id = (point_id_parent << 16) + point_id_child
 
                     if joint_id in self._joint_id_mapping.keys():
                         joint_angles[:, self._joint_id_mapping[joint_id], :] = (
